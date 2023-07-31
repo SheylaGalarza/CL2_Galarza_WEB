@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+    <head>
+        <title>Spring Boot</title>
+        <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+        <style>
+        body {
+            background-color: #f2f2f2;
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 20px;
+            text-align: center;
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+        table {
+            margin: 0 auto;
+            border-collapse: collapse;
+            width: 80%;
+        }
+        th, td {
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #1e90ff;
+            color: #fff;
+        }
+        .reservation-block {
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            margin-bottom: 20px;
+            max-width: 80%;
+            margin: 0 auto;
+        }
+        button {
+            background-color: #1e90ff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+    </style>
+    </head>
+    <body>
+		 <h1>Listado de Reservaciones</h1>
+		 <table>
+			<thead>
+            <tr>
+                <th>Código de Reserva</th>
+                <th>Código de Hotel</th>
+                <th>Código de Huésped</th>
+                <th>Código de Habitación</th>
+                <th>Fecha de Inicio</th>
+                <th>Fecha de Fin</th>
+            </tr>
+            </thead>
+            <tbody>
+			   <th:block th:each="p : ${lstReservacion}">
+				<tr>
+					<td th:text="${p.codigoReserva}"></td>
+					<td th:text="${p.codigoHotel}"></td>
+					<td th:text="${p.codigoHuesped}"></td>
+					<td th:text="${p.codigoHabitacion}"></td>
+					<td th:text="${p.fechaInicio}"></td>
+					<td th:text="${p.fechaFin}"></td>
+				</tr>
+			   </th:block>
+        </tbody>
+		</table>
+		<br>
+		<button onclick="location.href='/reservacion/registrar'">Registrar Reserva</button>
+        <button onclick="location.href='/home'">Salir</button>
+    </body>
+</html>

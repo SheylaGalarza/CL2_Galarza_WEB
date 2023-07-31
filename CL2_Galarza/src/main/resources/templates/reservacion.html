@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<head>
+    <title>Registrar Reserva</title>
+    <style>
+        body {
+            background-color: #f2f2f2;
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 20px;
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        label, input, button {
+            display: block;
+            margin-bottom: 10px;
+        }
+        button {
+            background-color: #1e90ff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Formulario de Reserva</h1>
+    <form th:action="@{/reservacion/registro}" method="post" th:object="${reservation}">
+        <label for="codigoHotel">Código del Hotel:</label>
+        <input type="text" id="codigoHotel" name="codigoHotel" th:field="*{codigoHotel}" required>
+        
+        <label for="codigoHuesped">Código del Huésped:</label>
+        <input type="text" id="codigoHuesped" name="codigoHuesped" th:field="*{codigoHuesped}" required>
+
+        <label for="codigoHabitacion">Código de la Habitación:</label>
+        <input type="text" id="codigoHabitacion" name="codigoHabitacion" th:field="*{codigoHabitacion}" required>
+
+        <label for="fechaInicio">Fecha de Inicio:</label>
+        <input type="date" id="fechaInicio" name="fechaInicio" th:field="*{fechaInicio}" required>
+
+        <label for="fechaFin">Fecha de Fin:</label>
+        <input type="date" id="fechaFin" name="fechaFin" th:field="*{fechaFin}" required>
+        
+        <button type="submit">Registrar</button>
+    </form>
+
+     <form action="/home">
+        <button type="submit" style="background-color: #FF0000;">Cancelar</button>
+    </form>
+
+    <form th:action="@{/reservacion/occupiedRooms}" method="get">
+        <button type="submit">Visualizar Habitaciones Ocupadas</button>
+    </form>
+</body>
+</html>
+
